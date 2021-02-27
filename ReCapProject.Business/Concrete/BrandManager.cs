@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using ReCapProject.Business.Abstract;
+using ReCapProject.Business.Constants;
+using ReCapProject.Core.Utilities.Results;
 using ReCapProject.DataAccess.Abstract;
 using ReCapProject.Entities.Concrete;
 
@@ -10,29 +12,32 @@ namespace ReCapProject.Business.Concrete
     public class BrandManager:IBrandService
     {
         IBrandDal _brandDal;
-        public List<Brand> GetAll()
+        public IDataResult<List<Brand>> GetAll()
         {
-            return _brandDal.GetAll();
+            return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(), Messages.BrandListed);
         }
 
-        public Brand Get(int id)
+        public IDataResult<Brand> Get(int id)
         {
-            return _brandDal.Get(p=>p.Id==id);
+            return new SuccessDataResult<Brand>(_brandDal.Get(p=>p.Id==id),Messages.BrandsListed);
         }
 
-        public void Add(Brand entity)
+        public IResult Add(Brand entity)
         {
             _brandDal.Add(entity);
+            return new SuccessResult(Messages.BrandAdded);
         }
 
-        public void Update(Brand entity)
+        public IResult Update(Brand entity)
         {
             _brandDal.Update(entity);
+            return new SuccessResult(Messages.BrandUpdated);
         }
 
-        public void Delete(Brand entity)
+        public IResult Delete(Brand entity)
         {
             _brandDal.Delete(entity);
+            return new SuccessResult(Messages.BrandDeleted);
         }
     }
 }

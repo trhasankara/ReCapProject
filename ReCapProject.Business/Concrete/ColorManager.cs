@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using ReCapProject.Business.Abstract;
+using ReCapProject.Business.Constants;
+using ReCapProject.Core.Utilities.Results;
 using ReCapProject.DataAccess.Abstract;
 using ReCapProject.Entities.Concrete;
 
@@ -10,29 +12,32 @@ namespace ReCapProject.Business.Concrete
     public class ColorManager:IColorService
     {
         IColorDal _colorDal;
-        public List<Color> GetAll()
+        public IDataResult<List<Color>> GetAll()
         {
-            return _colorDal.GetAll();
+            return new SuccessDataResult<List<Color>>(_colorDal.GetAll(),Messages.ColorsListed);
         }
 
-        public Color Get(int id)
+        public IDataResult<Color> Get(int id)
         {
-            return _colorDal.Get(p => p.Id == id);
+            return new SuccessDataResult<Color>(_colorDal.Get(p => p.Id == id), Messages.ColorListed);
         }
 
-        public void Add(Color entity)
+        public IResult Add(Color entity)
         {
            _colorDal.Add(entity);
+           return new SuccessResult(Messages.ColorAdded);
         }
 
-        public void Update(Color entity)
+        public IResult Update(Color entity)
         {
             _colorDal.Update(entity);
+            return new SuccessResult(Messages.ColorUpdated);
         }
 
-        public void Delete(Color entity)
+        public IResult Delete(Color entity)
         {
             _colorDal.Delete(entity);
+            return new SuccessResult(Messages.ColorDeleted);
         }
     }
 }

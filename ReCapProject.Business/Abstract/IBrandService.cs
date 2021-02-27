@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using ReCapProject.Core.Utilities.Results;
 using ReCapProject.Entities.Concrete;
 
 namespace ReCapProject.Business.Abstract
 {
     public interface IBrandService
     {
-        List<Brand> GetAll();
-        Brand Get(int id);
-        void Add(Brand entity);
-        void Update(Brand entity);
-        void Delete(Brand entity);
+        IDataResult<List<Brand>> GetAll();
+        IDataResult<Brand> Get(int id);
+        IResult Add(Brand entity);
+        IResult Update(Brand entity);
+        IResult Delete(Brand entity);
     }
 }
