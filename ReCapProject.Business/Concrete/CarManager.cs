@@ -12,6 +12,12 @@ namespace ReCapProject.Business.Concrete
     public class CarManager:ICarService
     {
         ICarDal _carDal;
+
+        public CarManager(ICarDal carDal)
+        {
+            _carDal = carDal;
+        }
+
         public IDataResult<List<Car>> GetAll()
         {
             if (DateTime.Now.Hour == 2)
