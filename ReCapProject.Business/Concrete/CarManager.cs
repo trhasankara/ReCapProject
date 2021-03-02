@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using ReCapProject.Business.Abstract;
 using ReCapProject.Business.Constants;
+using ReCapProject.Business.ValidationRules.FluentValidation;
+using ReCapProject.Core.Aspects.Autofac.Validation;
 using ReCapProject.Core.Utilities.Results;
 using ReCapProject.DataAccess.Abstract;
 using ReCapProject.Entities.Concrete;
@@ -32,16 +34,9 @@ namespace ReCapProject.Business.Concrete
             return new SuccessDataResult<Car>(_carDal.Get(p => p.Id == id));
         }
 
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
-            if (car.Name.Length < 2)
-            {
-                return new ErrorResult(Messages.CarNameInvalid);
-            }
-            if (car.DailyPrice < 0)
-            {
-                return new ErrorResult("Aracın kiralama ücreti 0 dan büyük olmaldır!");
-            }
             _carDal.Add(car);
             return new Result(true,Messages.CarAdded);
         }
