@@ -12,5 +12,9 @@
     <ProjectReference Include="..\ReCapProject.Business\ReCapProject.Business.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
+
 
 </Project>

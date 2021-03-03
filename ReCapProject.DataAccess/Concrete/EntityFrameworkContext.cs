@@ -22,5 +22,7 @@ namespace ReCapProject.DataAccess.Concrete.EntityFramework
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Rental> Rentals { get; set; }
 
+        public DbSet<CarImage> CarImages { get; set; }
+
     }
 }
