@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using ReCapProject.Core.Entities;
 
-namespace ReCapProject.Entities.Concrete
+namespace ReCapProject.Core.Entities.Concrete
 {
-    public class User : IEntity
+    public class User:IEntity
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
@@ -14,6 +13,5 @@ namespace ReCapProject.Entities.Concrete
         public string PasswordHash { get; set; }
         public string PasswordSalt { get; set; }
         public bool Status { get; set; }
-
     }
 }
