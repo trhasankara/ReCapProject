@@ -8,7 +8,7 @@ using ReCapProject.Entities.Concrete;
 
 namespace ReCapProject.DataAccess.Concrete.EntityFramework
 {
-    public class EfCarDal:EfEntityRepositoryBase<Car,EntityFrameworkContext>,ICarDal
+    public class EfCarDal:EfEntityRepositoryBase<Car,ReCapProjectContext>,ICarDal
     {
 
     }

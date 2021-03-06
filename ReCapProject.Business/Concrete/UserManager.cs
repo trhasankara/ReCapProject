@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using ReCapProject.Business.Abstract;
+﻿using ReCapProject.Business.Abstract;
+using ReCapProject.Core.Entities.Concrete;
 using ReCapProject.Core.Utilities.Results;
 using ReCapProject.DataAccess.Abstract;
-using ReCapProject.Entities.Concrete;
+using System.Collections.Generic;
 
 namespace ReCapProject.Business.Concrete
 {
-    public class UserManager:IUserService
+    public class UserManager : IUserService
     {
         IUserDal _userDal;
 
@@ -16,32 +14,20 @@ namespace ReCapProject.Business.Concrete
         {
             _userDal = userDal;
         }
-        public IDataResult<List<User>> GetAll()
+
+        public List<OperationClaim> GetClaims(User user)
         {
-            return new SuccessDataResult<List<User>>(_userDal.GetAll(),"Kullanıcılar listelendi");
+            return _userDal.GetClaims(user);
         }
 
-        public IDataResult<User> Get(int id)
-        {
-            return new SuccessDataResult<User>(_userDal.Get(p=>p.Id==id), "Kullanıcı listelendi");
-        }
-
-        public IResult Add(User user)
+        public void Add(User user)
         {
             _userDal.Add(user);
-            return new SuccessResult("Kullanıcı eklendi");
         }
 
-        public IResult Update(User user)
+        public User GetByMail(string email)
         {
-            _userDal.Update(user);
-            return new SuccessResult("Kullanıcı güncellendi");
-        }
-
-        public IResult Delete(User user)
-        {
-            _userDal.Delete(user);
-            return new SuccessResult("Kullanıcı silindi");
+            return _userDal.Get(u => u.Email == email);
         }
     }
 }

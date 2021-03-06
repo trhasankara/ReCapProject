@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
+using ReCapProject.Core.Entities.Concrete;
 using ReCapProject.Entities.Concrete;
 
 namespace ReCapProject.Business.Constants
@@ -21,6 +23,13 @@ namespace ReCapProject.Business.Constants
         public static string ColorAdded = "Renk eklendi";
         public static string ColorDeleted = "Renk silindi";
         public static string ColorUpdated = "Renk güncellendi";
-        internal static string CarImageLimitExceeded;
+        public static string CarImageLimitExceeded="Resim yükleme sınırına ulaştınız!";
+        public static string AuthorizationDenied="Yetkiniz yok!";
+        public static string UserRegistered="Kullanıcı kayıt edildi";
+        public static string UserNotFound="Kullanıcı bulunamadı!";
+        public static string PasswordError="Parola hatalı!";
+        public static string SuccessfulLogin="Giriş başarılı";
+        public static string UserAlreadyExists="Kullanıcı mevcut1";
+        public static string AccessTokenCreated="Token oluşturuldu";
     }
 }

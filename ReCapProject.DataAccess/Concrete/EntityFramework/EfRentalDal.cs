@@ -7,7 +7,7 @@ using ReCapProject.Entities.Concrete;
 
 namespace ReCapProject.DataAccess.Concrete.EntityFramework
 {
-    public class EfRentalDal:EfEntityRepositoryBase<Rental,EntityFrameworkContext>,IRentalDal
+    public class EfRentalDal:EfEntityRepositoryBase<Rental,ReCapProjectContext>,IRentalDal
     {
     }
 }
